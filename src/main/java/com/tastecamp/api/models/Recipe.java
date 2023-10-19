@@ -1,5 +1,6 @@
 package com.tastecamp.api.models;
 
+
 import com.tastecamp.api.dto.RecipesDTO;
 
 import jakarta.persistence.Column;
@@ -27,7 +28,7 @@ public class Recipe {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
-  @Column(length = 50, nullable = false)
+  @Column(length = 50, nullable = false, unique = true)
   private String name;
 
   @Column(length = 150, nullable = false)

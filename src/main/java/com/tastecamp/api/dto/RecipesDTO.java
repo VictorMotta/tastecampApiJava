@@ -18,7 +18,7 @@ public record RecipesDTO(
   @Size(min = 20, max = 150)
   String ingredients,
   @NotNull
-  @Max(500)
+  @Size(min = 20, max = 500)
   String preparation,
   @NotNull
   @Positive
