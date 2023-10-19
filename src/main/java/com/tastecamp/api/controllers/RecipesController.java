@@ -1,5 +1,8 @@
 package com.tastecamp.api.controllers;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +14,8 @@ import com.tastecamp.api.dto.RecipesDTO;
 import com.tastecamp.api.models.Recipe;
 import com.tastecamp.api.repositories.RecipeRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/recipes")
 public class RecipesController {
@@ -19,12 +24,12 @@ public class RecipesController {
   private RecipeRepository repository;
 
   @GetMapping
-  public String getAll() {
-    return "Retornou todas as receitas!";
+  public List<Recipe> getAll() {
+    return repository.findAll();
   }
 
   @PostMapping
-  public void create(@RequestBody RecipesDTO req) {
+  public void create(@RequestBody @Valid RecipesDTO req) {
     repository.save(new Recipe(req));
   }
 
